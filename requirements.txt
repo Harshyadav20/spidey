@@ -1,0 +1,10 @@
+# Vercel Python serverless function dependencies.
+# Vercel auto-detects this file at the project root and installs these
+# packages into the Python runtime that powers /api/*.py functions.
+
+# Gemini API client (used by api/chat-ai.py as the primary LLM)
+google-genai>=2.25.0
+
+# OpenAI-compatible chat API client (used as the fallback after Gemini).
+# Works with OpenAI, DeepSeek, Groq, Together AI, Mistral, local Ollama, etc.
+openai>=3.0.0
