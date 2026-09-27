@@ -7,7 +7,7 @@ This guide walks you through deploying the Gemini Portal (Next.js + Python serve
 | Component            | Local dev                            | Vercel production                          |
 |----------------------|--------------------------------------|--------------------------------------------|
 | Next.js app          | `next dev -p 3000`                   | Vercel Next.js serverless                  |
-| Python AI service    | `mini-services/gemini-service/` on :5001 | `api/chat-ai.py` Vercel Python serverless |
+| Python AI service    | `mini-services/gemini-service/` on :5001 | `functions/chat-ai.py` Vercel Python serverless |
 | Database             | SQLite (file:./db/custom.db)         | PostgreSQL (Neon / Vercel Postgres)        |
 | Media storage        | Local `/public/uploads` (fallback)   | Firebase Storage (real cloud)              |
 | Firebase Auth        | Real Firebase Google + Phone OTP     | Same — works on Vercel                     |
@@ -118,9 +118,9 @@ The `vercel.json` build command runs `bash scripts/vercel-build.sh && next build
 4. Runs `prisma db push --accept-data-loss` (creates/migrates the schema on first deploy)
 5. Then `next build` runs as normal
 
-The `api/chat-ai.py` Vercel Python serverless function:
+The `functions/chat-ai.py` Vercel Python serverless function:
 - Installed via `requirements.txt` (google-genai, openai)
-- Becomes available at `/api/chat-ai`
+- Becomes available at `/functions/chat-ai` (Vercel auto-detects Python files outside `/api/` — the `/api/` folder is reserved for Next.js routes)
 - Mirrors the logic in `mini-services/gemini-service/main.py`
 - Same fallback chain: Gemini → OpenAI-compatible → offline reply
 

@@ -69,11 +69,11 @@ Quick summary:
 
 ```
 .
-├── api/
+├── functions/
 │   └── chat-ai.py             # Vercel Python serverless function (Gemini + DeepSeek + fallback)
 ├── mini-services/
 │   └── gemini-service/
-│       ├── main.py            # Local Python FastAPI service (mirrors api/chat-ai.py)
+│       ├── main.py            # Local Python FastAPI service (mirrors functions/chat-ai.py)
 │       └── package.json
 ├── prisma/
 │   ├── schema.prisma          # SQLite schema (local dev)

@@ -2,17 +2,5 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "buildCommand": "bash scripts/vercel-build.sh && next build",
-  "installCommand": "bun install",
-  "functions": {
-    "api/chat-ai.py": {
-      "maxDuration": 60,
-      "memory": 512
-    },
-    "app/api/chat/route.ts": {
-      "maxDuration": 60
-    },
-    "app/api/media/upload/route.ts": {
-      "maxDuration": 60
-    }
-  }
+  "installCommand": "bun install"
 }
